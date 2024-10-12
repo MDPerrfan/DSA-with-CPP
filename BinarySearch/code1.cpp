@@ -1,6 +1,29 @@
 #include <iostream>
 #include <vector>
 using namespace std;
+// Recursive binary search function
+int recursiveBinarySearch(vector<int>& arr, int left, int right, int target) {
+    // Base case: If left index exceeds right, the target is not present
+    if (left > right) {
+        return -1;  // Target not found
+    }
+
+    // Find the middle index
+    int mid = left + (right - left) / 2;
+
+    // If the target is found at mid
+    if (arr[mid] == target) {
+        return mid;
+    }
+
+    // If target is smaller than mid, it must be in the left half
+    if (arr[mid] > target) {
+        return recursiveBinarySearch(arr, left, mid - 1, target);
+    }
+
+    // Otherwise, the target is in the right half
+    return recursiveBinarySearch(arr, mid + 1, right, target);
+}
 
 // Binary Search function
 int binarySearch(vector<int>& arr, int target) {
