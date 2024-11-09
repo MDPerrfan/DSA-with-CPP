@@ -4,18 +4,18 @@ using namespace std;
 // Function to implement Insertion Sort
 void insertionSort(int arr[], int n) {
     for (int i = 1; i < n; i++) {
-        int key = arr[i];
-        int j = i - 1;
+        int curr = arr[i];
+        int prev = i - 1;
 
         // Move elements of arr[0..i-1], that are greater than the key,
         // to one position ahead of their current position
-        while (j >= 0 && arr[j] > key) {
-            arr[j + 1] = arr[j];
-            j--;
+        while (prev >= 0 && arr[prev] >curr) {
+            arr[prev + 1] = arr[prev];
+            prev--;
         }
 
         // Place the key at its correct position
-        arr[j + 1] = key;
+        arr[prev + 1] = curr;
     }
 }
 
